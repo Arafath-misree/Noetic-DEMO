@@ -1,0 +1,69 @@
+$input-padding = 10px
+
+.payment-wrapper
+  min-height: 100vh
+  display: flex
+  justify-content: center
+  align-items: center
+
+.payment
+  max-width: 100%
+  width: 400px
+  padding: 15px
+  text-align: center
+  border-radius: $br
+  background: linear-gradient(45deg, #ddd 0%, #eee 100%)
+  color: #333
+
+  input
+    width: 100%
+    margin: 5px 0
+    padding: $input-padding
+    border: none
+    border-radius: $br
+    outline: none
+    text-align: center
+
+  .btn
+    width: 100%
+    padding: 10px
+
+.payment-disabled
+  opacity: .4
+  pointer-events: none
+  transition: opacity .5s
+
+.split-inputs
+  display: flex
+
+  // Gutter
+  > *:first-child
+    margin-right: 10px
+
+$card-image-width = 30px
+.input--card
+  position: relative
+
+  input
+    padding-left: (($input-padding * 2) + $card-image-width)
+
+  // In the future this could display the actual card type images and support
+  // more cards
+  &::before
+    content: ''
+    width: $card-image-width
+    height: 20px
+    position: absolute
+    top: 50%
+    left: $input-padding
+    transform: translateY(-50%)
+    background: #ddd
+
+  &--mastercard::before
+    background: red
+
+  &--visa::before
+    background: blue
+
+  &--americanexpress::before
+    background: #333
